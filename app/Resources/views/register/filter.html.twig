@@ -1,0 +1,40 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phn</th>
+        <th>Gender</th>
+        <th>Address</th>
+        <th>District</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for var in response %}
+
+        <tr>
+            <td><a href="{{ path('member_show', { 'id': var.id }) }}">{{ var.id }}</a></td>
+            <td>{{ var.name }}</td>
+            <td>{{ var.email }}</td>
+            <td>{{ var.phone }}</td>
+            <td>{{ var.gender}}</td>
+            <td>{{ var.address }}</td>
+            <td>{{ var.church }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('member_show', { 'id': var.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('member_edit', { 'id': var.id }) }}">edit</a>
+                    </li>
+
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+

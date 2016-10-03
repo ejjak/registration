@@ -1,0 +1,19 @@
+{
+  "name": "bower",
+  "authors": [
+    "Andrias Tamang <andrewz.syangden@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/assets/vendor/",
+    "test",
+    "tests"
+  ]
+}

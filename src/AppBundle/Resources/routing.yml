@@ -1,0 +1,3 @@
+task_update:
+    path: /taskShow
+    defaults: { _controller: AppBundle:Default:new }

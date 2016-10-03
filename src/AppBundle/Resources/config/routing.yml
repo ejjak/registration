@@ -1,0 +1,4 @@
+app_member:
+    resource: "@AppBundle/Resources/config/routing/register.yml"
+    prefix:   /member
+

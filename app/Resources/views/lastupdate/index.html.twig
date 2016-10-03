@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>LastUpdate list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lastupdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lastUpdate in lastUpdates %}
+            <tr>
+                <td><a href="{{ path('lastupdate_show', { 'id': lastUpdate.id }) }}">{{ lastUpdate.id }}</a></td>
+                <td>{{ lastUpdate.lastupdate }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('lastupdate_show', { 'id': lastUpdate.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('lastupdate_edit', { 'id': lastUpdate.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('lastupdate_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

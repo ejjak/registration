@@ -1,0 +1,31 @@
+member_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Register:index" }
+    methods:  GET
+
+member_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Register:show" }
+    methods:  GET
+
+member_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Register:new" }
+    methods:  [GET, POST]
+
+member_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Register:edit" }
+    methods:  [GET, POST]
+
+member_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Register:delete" }
+    methods:  DELETE
+
+member_filter:
+    path: /filter
+    defaults: { _controller: "AppBundle:FilterGender:Filter" }
+    methods:  [GET, POST]
+
+

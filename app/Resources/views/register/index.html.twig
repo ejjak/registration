@@ -1,0 +1,114 @@
+{% extends 'admin.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .container{position: relative;}
+        .loading-overlay{
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            background: rgba(255,255,255,0.7);
+        }
+        .overlay-content {
+            position: absolute;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            top: 50%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #555;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <div class="container">
+    <h1>Register list</h1>
+    <div class="form-group pull-right">
+        <select class="form-control" onchange="getUsers('sort',this.value)">
+            <option value="">Sort By Gender</option>
+            <option value="value1">Male</option>
+            <option value="value2">Female</option>
+        </select>
+    </div>
+    <div class="loading-overlay" style="display: none;">
+        <div class="overlay-content">
+            <img src="{{ asset('images/loading-gear.gif') }}" >
+        </div>
+    </div>
+    <div id="userData">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phn</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Church</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for register in registers %}
+            <tr>
+                <td><a href="{{ path('member_show', { 'id': register.id }) }}">{{ register.id }}</a></td>
+                <td>{{ register.name }}</td>
+                <td>{{ register.email }}</td>
+                <td>{{ register.phn }}</td>
+                <td>{{ register.gender }}</td>
+                <td>{{ register.address }}</td>
+                <td>{{ register.church }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('member_show', { 'id': register.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('member_edit', { 'id': register.id }) }}">edit</a>
+                        </li>
+
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('member_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+//        $(function () {
+//            $("#status").change(function () {
+//                var selectedText = $(this).find("option:selected").text();
+//                var selectedValue = $(this).val();
+//                alert("Selected Text: " + selectedText + " Value: " + selectedValue);
+//            });
+            function getUsers(type,val){
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path('member_filter') }}',
+                    data: 'type='+type+'&val='+val,
+                    beforeSend:function(html){
+                        $('.loading-overlay').show();
+                    },
+                    success:function(html){
+                        $('.loading-overlay').hide();
+                        $('#userData').html(html);
+                    }
+                });
+            }
+    </script>
+{% endblock %}
