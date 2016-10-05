@@ -13,7 +13,6 @@
     </thead>
     <tbody>
     {% for var in response %}
-
         <tr>
             <td><a href="{{ path('member_show', { 'id': var.id }) }}">{{ var.id }}</a></td>
             <td>{{ var.name }}</td>
@@ -22,16 +21,17 @@
             <td>{{ var.gender}}</td>
             <td>{{ var.address }}</td>
             <td>{{ var.church }}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('member_show', { 'id': var.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('member_edit', { 'id': var.id }) }}">edit</a>
-                    </li>
-
-                </ul>
+            <td width="15%">
+                <table>
+                    <tr>
+                        <td width="80px">
+                            <a href="{{ path('member_show', { 'id': var.id }) }}" class="btn btn-sm btn-default"><i class="fa fa-eye"></i> show</a>
+                        </td>
+                        <td width="80px">
+                            <a href="{{ path('member_edit', { 'id': var.id }) }}" class="btn btn-sm btn-default"><i class="fa fa-edit"></i> edit </a>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
     {% endfor %}

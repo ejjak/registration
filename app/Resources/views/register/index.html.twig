@@ -33,6 +33,7 @@
             <option value="">Sort By Gender</option>
             <option value="value1">Male</option>
             <option value="value2">Female</option>
+            <option value="">All</option>
         </select>
     </div>
     <div class="loading-overlay" style="display: none;">
@@ -57,23 +58,24 @@
         <tbody>
         {% for register in registers %}
             <tr>
-                <td><a href="{{ path('member_show', { 'id': register.id }) }}">{{ register.id }}</a></td>
+                <td><input type='checkbox' value='{{ register.id }}' name='checkedBoxes[]'/><a href="{{ path('member_show', { 'id': register.id }) }}">{{ register.id }}</a></td>
                 <td>{{ register.name }}</td>
                 <td>{{ register.email }}</td>
                 <td>{{ register.phn }}</td>
                 <td>{{ register.gender }}</td>
                 <td>{{ register.address }}</td>
                 <td>{{ register.church }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('member_show', { 'id': register.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('member_edit', { 'id': register.id }) }}">edit</a>
-                        </li>
-
-                    </ul>
+                <td width="15%">
+                    <table>
+                        <tr>
+                            <td width="80px">
+                                <a href="{{ path('member_show', { 'id': register.id }) }}" class="btn btn-sm btn-default"><i class="fa fa-eye"></i> show</a>
+                            </td>
+                            <td width="80px">
+                                <a href="{{ path('member_edit', { 'id': register.id }) }}" class="btn btn-sm btn-default"><i class="fa fa-edit"></i> edit </a>
+                            </td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
         {% endfor %}

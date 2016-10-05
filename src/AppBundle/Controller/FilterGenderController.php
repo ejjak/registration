@@ -34,9 +34,15 @@ class FilterGenderController extends Controller
                                 $res[] = $person;
                         }
                     }
-                    else{
+                    elseif($_POST['val'] == 'value2'){
                         foreach ($response as $person1) {
                             if (strcasecmp($person1['gender'], 'Female') == 0)
+                                $res[] = $person1;
+                        }
+                    }
+                    else{
+                        foreach ($response as $person1) {
+//                            if (strcasecmp($person1['gender'], 'Female') == 0)
                                 $res[] = $person1;
                         }
                     }
