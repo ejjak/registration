@@ -1,21 +1,38 @@
 {% extends 'admin.html.twig' %}
 
 {% block body %}
-    <h1>Register edit</h1>
-
+    <h1 class="page-header">Edit Entry</h1>
+    <div>
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+    <label>Name</label>
+    {{ form_widget(edit_form.name, { 'attr': {'class': 'form-control'} }) }}
+        <br>
+    <label>Last Name</label>
+    {{ form_widget(edit_form.email, { 'attr': {'class': 'form-control'} }) }}
+        <br>
+    <label>Phone</label>
+    {{ form_widget(edit_form.phn, { 'attr': {'class': 'form-control'} }) }}
+        <br>
+    <label>Gender</label>
+    {{ form_widget(edit_form.gender, { 'attr': {'class': 'form-control'} }) }}
+        <br>
+    <label>Address</label>
+    {{ form_widget(edit_form.address, { 'attr': {'class': 'form-control'} }) }}
+        <br>
+    <label>Church</label>
+    {{ form_widget(edit_form.church, { 'attr': {'class': 'form-control'} }) }}
+        <br>
+    <input type="submit" value="Edit" class="btn btn-sm btn-success"/>
     {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('member_index') }}">Back to the list</a>
-        </li>
-        <li>
+    </div>
+    <p>&nbsp;</p>
+    <table>
+        <tr>
+        <td>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Delete" class="btn btn-sm btn-danger"> <a href="{{ path('member_index') }}" class="btn btn-sm btn-default"><i class="fa fa-reply fa-fw"></i> Back to the list</a>
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        </td>
+        </tr>
+    </table>
 {% endblock %}
