@@ -1,0 +1,50 @@
+{% extends 'admin.html.twig' %}
+{% block body %}
+<div ng-app="fetch"  ng-controller="dbCtrl">
+    <p>&nbsp;</p>
+    <input type="text" ng-model="searchFilter" class="form-control" placeholder="Search...">
+    <p>&nbsp;</p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Phone No.</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Church</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="register in data | filter:searchFilter">
+                <td>{[{ register.id }]}</td>
+                <td>{[{ register.name }]}</td>
+                <td>{[{ register.email }]}</td>
+                <td>{[{ register.phone }]}</td>
+                <td>{[{ register.gender }]}</td>
+                <td>{[{ register.address }]}</td>
+                <td>{[{ register.church }]}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    {% endblock %}
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
+    <script type="text/javascript">
+        var fetch = angular.module('fetch', []).config(function($interpolateProvider){
+            $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+        });
+
+        fetch.controller('dbCtrl', ['$scope', '$http', function ($scope, $http) {
+            $http.get("{{ path('emp_angular') }}")
+                    .success(function(data){
+                        $scope.data = data;
+                                           })
+                    .error(function() {
+                        $scope.data = "error in fetching data";
+                    });
+        }]);
+        </script>
+{% endblock %}

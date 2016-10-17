@@ -28,4 +28,12 @@ member_filter:
     defaults: { _controller: "AppBundle:FilterGender:Filter" }
     methods:  [GET, POST]
 
+emp_angular:
+    path: /emps-angular
+    defaults: { _controller: "AppBundle:Emp:emp_angular" }
+
+angular:
+    path: /angular
+    defaults: { _controller: "AppBundle:Emp:angular" }
+
 
