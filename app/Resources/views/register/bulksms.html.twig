@@ -1,0 +1,13 @@
+{% block body %}
+<h1 class="page-header">New Registration</h1>
+{{ form_start(form) }}
+{#<label>Name</label>#}
+{#{{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}#}
+{#<br>#}
+{#<label>Phone</label>#}
+{#{{ form_widget(form.phn, { 'attr': {'class': 'form-control'} }) }}#}
+{#<br>#}
+<input type="submit" value="Create" class="btn btn-sm btn-success" />  <a href="{{ path('member_index') }}" class="btn btn-sm btn-default"><i class="fa fa-reply fa-fw"></i> Back to the list</a>
+{{ form_end(form) }}
+
+{% endblock %}

@@ -28,4 +28,10 @@ member_filter:
     defaults: { _controller: "AppBundle:FilterGender:Filter" }
     methods:  [GET, POST]
 
+bulk_sms:
+    path: /bulksmsview
+    defaults: { _controller: "AppBundle:Bulk:Bulk" }
+    methods:  [GET, POST]
+
+
 
