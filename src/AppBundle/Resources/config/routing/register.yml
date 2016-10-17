@@ -36,4 +36,10 @@ angular:
     path: /angular
     defaults: { _controller: "AppBundle:Emp:angular" }
 
+bulk_sms:
+    path: /bulksmsview
+    defaults: { _controller: "AppBundle:Bulk:Bulk" }
+    methods:  [GET, POST]
+
+
 
