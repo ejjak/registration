@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Register;
+use AppBundle\Entity\Task;
 use AppBundle\MvaayoBulk;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -66,24 +67,26 @@ class BulkController extends Controller
                             $flattenArray = array();
                             foreach(new \RecursiveIteratorIterator(new \RecursiveArrayIterator($res)) as $value) {
                                 $flattenArray[] = $value;
-                            }
+
+                                $phn = implode(",", $flattenArray);
+                                                          }
                         }
                     }
                 }
                 }
         }
-        $form = $this->createForm('AppBundle\Form\SendSmsType', $flattenArray);
+        $tasks = new Task();
+        $form = $this->createForm('AppBundle\Form\TaskType', $tasks);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             // perform some action...
             $mvaayo = new MvaayoBulk();
-            $mvaayo->BulkSmsAction($flattenArray);
-            return $this->redirectToRoute('task_success');
+            $mvaayo->BulkSmsAction($phn, $tasks);
+//            return $this->redirectToRoute('task_success');
         }
 
         return $this->render('register/bulksms.html.twig', array(
-            'register' => $flattenArray,
             'form' => $form->createView(),
         ));
     }

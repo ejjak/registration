@@ -25,7 +25,21 @@
                 <td>{[{ register.gender }]}</td>
                 <td>{[{ register.address }]}</td>
                 <td>{[{ register.church }]}</td>
+                {% for register in registers %}
+                <td width="15%">
+                    <table>
+                        <tr>
+                            <td width="80px">
+                                <a href="{{ path('member_show', { 'id': register.id }) }}" class="btn btn-sm btn-success"><i class="fa fa-eye"></i> show</a>
+                            </td>
+                            <td width="80px">
+                                <a href="{{ path('member_edit', { 'id': register.id }) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> edit </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
             </tr>
+        {% endfor %}
         </tbody>
     </table>
 </div>

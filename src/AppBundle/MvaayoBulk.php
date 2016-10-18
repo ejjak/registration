@@ -7,13 +7,14 @@
  */
 namespace AppBundle;
 use AppBundle\Entity\Register;
+use AppBundle\Entity\Task;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class MvaayoBulk extends Controller
 {
-    public function BulkSmsAction($flattenArray)
+    public function BulkSmsAction($phn, $tasks)
     {
-        dump($flattenArray);die;
+//                dump($phn,$tasks );die;
 //        $phone_list = "";
 //        foreach ($response as $rowRestore)
 //        {
@@ -56,32 +57,31 @@ class MvaayoBulk extends Controller
 //        curl_close($ch);
 //        return $buffer;
 
-//        dump($response);die;
-        foreach($flattenArray as $val){
-            dump($val);die;
-        $ch = curl_init();
-        $user = "ezycreation@live.com:Misfit?321";
-        $senderID = "TEST SMS";
-        curl_setopt($ch, CURLOPT_URL, "http://api.mVaayoo.com/mvaayooapi/MessageCompose");
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        $receipientno = $val['phone'];
-        $msgtxt = 'Hey';
-        curl_setopt($ch, CURLOPT_POSTFIELDS, "user=$user&senderID=$senderID&receipientno=$receipientno&msgtxt=$msgtxt");
 
 
-        $buffer = curl_exec($ch);
+//        $ch = curl_init();
+//        $user = "ezycreation@live.com:Misfit?321";
+//        $senderID = "TEST SMS";
+//        curl_setopt($ch, CURLOPT_URL, "http://api.mVaayoo.com/mvaayooapi/MessageCompose");
+//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//        curl_setopt($ch, CURLOPT_POST, 1);
+//        $receipientno = $phn;
+//
+//        if($tasks instanceof Task)
+//        {
+//            $message = $tasks->getTask();
+//            $msgtxt = $message;
+//            curl_setopt($ch, CURLOPT_POSTFIELDS, "user=$user&senderID=$senderID&receipientno=$receipientno&msgtxt=$msgtxt");
+//        }
+//        $buffer = curl_exec($ch);
+//
+//        if (empty ($buffer)) {
+//            echo " buffer is empty ";
+//        } else {
+//            echo $buffer;
+//        }
+//        curl_close($ch);
+//        return $buffer;
 
-        if (empty ($buffer)) {
-            echo " buffer is empty ";
-        } else {
-            echo $buffer;
-        }
-
-        curl_close($ch);
-        return $buffer;
-        }
     }
-
-
 }
