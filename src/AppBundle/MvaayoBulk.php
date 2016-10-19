@@ -14,7 +14,7 @@ class MvaayoBulk extends Controller
 {
     public function BulkSmsAction($phone, $tasks)
     {
-                dump($phone,$tasks );die;
+//                dump($phone,$tasks );die;
 //        $phone_list = "";
 //        foreach ($response as $rowRestore)
 //        {
@@ -59,29 +59,29 @@ class MvaayoBulk extends Controller
 
 
 //
-//        $ch = curl_init();
-//        $user = "ezycreation@live.com:Misfit?321";
-//        $senderID = "TEST SMS";
-//        curl_setopt($ch, CURLOPT_URL, "http://api.mVaayoo.com/mvaayooapi/MessageCompose");
-//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//        curl_setopt($ch, CURLOPT_POST, 1);
-//        $receipientno = $phone;
-//
-//        if($tasks instanceof Task)
-//        {
-//            $message = $tasks->getTask();
-//            $msgtxt = $message;
-//            curl_setopt($ch, CURLOPT_POSTFIELDS, "user=$user&senderID=$senderID&receipientno=$receipientno&msgtxt=$msgtxt");
-//        }
-//        $buffer = curl_exec($ch);
-//
-//        if (empty ($buffer)) {
-//            echo " buffer is empty ";
-//        } else {
+        $ch = curl_init();
+        $user = "ezycreation@live.com:Misfit?321";
+        $senderID = "TEST SMS";
+        curl_setopt($ch, CURLOPT_URL, "http://api.mVaayoo.com/mvaayooapi/MessageCompose");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        $receipientno = $phone;
+
+        if($tasks instanceof Task)
+        {
+            $message = $tasks->getTask();
+            $msgtxt = $message;
+            curl_setopt($ch, CURLOPT_POSTFIELDS, "user=$user&senderID=$senderID&receipientno=$receipientno&msgtxt=$msgtxt");
+        }
+        $buffer = curl_exec($ch);
+
+        if (empty ($buffer)) {
+            echo " buffer is empty ";
+        } else {
 //            echo $buffer;
-//        }
-//        curl_close($ch);
-//        return $buffer;
+        }
+        curl_close($ch);
+        return $buffer;
 
     }
 }
