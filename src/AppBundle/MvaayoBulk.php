@@ -12,9 +12,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class MvaayoBulk extends Controller
 {
-    public function BulkSmsAction($phn, $tasks)
+    public function BulkSmsAction($phone, $tasks)
     {
-//                dump($phn,$tasks );die;
+                dump($phone,$tasks );die;
 //        $phone_list = "";
 //        foreach ($response as $rowRestore)
 //        {

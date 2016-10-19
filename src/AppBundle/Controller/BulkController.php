@@ -45,36 +45,41 @@ class BulkController extends Controller
      */
     public function BulkAction(Request $request)
     {
-        $response=array('');
         $em = $this->getDoctrine()->getManager();
         $registers = $em->getRepository('AppBundle:Register')->findAll();
+        $value = array();
 //        $registers = $em->getRepository('AppBundle:Register')->findBy(array(),array('name'=>'ASC'));
 //        dump($registers);die;
         foreach ($registers as $val)
         {
             if($val instanceof Register)
                 {
-                    $name = $val->getName();
                     $phone = $val->getPhn();
-
+                    array_push($value,$phone);
 //                     $response[] =array('name'=>$name, 'phone'=>$phone);
-                $response[] =array($name=>$phone);
-                foreach($response as $key => $value){
-                    if(is_array($value)){
-                        foreach($value as $key1 => $value1){
-                            $res[]=array($key1 => $value1);
-
-                            $flattenArray = array();
-                            foreach(new \RecursiveIteratorIterator(new \RecursiveArrayIterator($res)) as $value) {
-                                $flattenArray[] = $value;
-
-                                $phn = implode(",", $flattenArray);
-                                                          }
-                        }
-                    }
-                }
+//                $response[] =array($name=>$phone);
+//                $flattenArray = array();
+//                foreach(new \RecursiveIteratorIterator(new \RecursiveArrayIterator($response)) as $value) {
+//                    $flattenArray[] = $value;
+//                    $phn = implode(",",$flattenArray);
+//                                                          }
+//                foreach($response as $key => $value){
+//                    if(is_array($value)){
+//                        foreach($value as $key1 => $value1){
+//                            $res[]=array($key1 => $value1);
+//
+//                            $flattenArray = array();
+//                            foreach(new \RecursiveIteratorIterator(new \RecursiveArrayIterator($res)) as $value) {
+//                                $flattenArray[] = $value;
+//
+//                                $phn = implode(",", $flattenArray);
+//                                                          }
+//                        }
+//                    }
+//                }
                 }
         }
+        $phone = implode(',',$value);
         $tasks = new Task();
         $form = $this->createForm('AppBundle\Form\TaskType', $tasks);
         $form->handleRequest($request);
@@ -82,7 +87,7 @@ class BulkController extends Controller
         if ($form->isValid()) {
             // perform some action...
             $mvaayo = new MvaayoBulk();
-            $mvaayo->BulkSmsAction($phn, $tasks);
+            $mvaayo->BulkSmsAction($phone, $tasks);
 //            return $this->redirectToRoute('task_success');
         }
 
