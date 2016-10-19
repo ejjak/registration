@@ -85,6 +85,11 @@ class BulkController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'Message set successfully!')
+            ;
             // perform some action...
             $mvaayo = new MvaayoBulk();
             $mvaayo->BulkSmsAction($phone, $tasks);

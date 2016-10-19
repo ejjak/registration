@@ -58,14 +58,14 @@ class MvaayoBulk extends Controller
 //        return $buffer;
 
 
-
+//
 //        $ch = curl_init();
 //        $user = "ezycreation@live.com:Misfit?321";
 //        $senderID = "TEST SMS";
 //        curl_setopt($ch, CURLOPT_URL, "http://api.mVaayoo.com/mvaayooapi/MessageCompose");
 //        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 //        curl_setopt($ch, CURLOPT_POST, 1);
-//        $receipientno = $phn;
+//        $receipientno = $phone;
 //
 //        if($tasks instanceof Task)
 //        {
