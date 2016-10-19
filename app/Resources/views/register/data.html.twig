@@ -2,7 +2,14 @@
 {% block body %}
 <div ng-app="fetch"  ng-controller="dbCtrl">
     <p>&nbsp;</p>
-    <input type="text" ng-model="searchFilter" class="form-control" placeholder="Search...">
+    <div class="input-group custom-search-form">
+        <input type="text" ng-model="searchFilter" class="form-control" placeholder="Search...">
+        <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+    </div>
     <p>&nbsp;</p>
     <table class="table table-striped">
         <thead>
@@ -25,21 +32,21 @@
                 <td>{[{ register.gender }]}</td>
                 <td>{[{ register.address }]}</td>
                 <td>{[{ register.church }]}</td>
-                {% for register in registers %}
-                <td width="15%">
-                    <table>
-                        <tr>
-                            <td width="80px">
-                                <a href="{{ path('member_show', { 'id': register.id }) }}" class="btn btn-sm btn-success"><i class="fa fa-eye"></i> show</a>
-                            </td>
-                            <td width="80px">
-                                <a href="{{ path('member_edit', { 'id': register.id }) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> edit </a>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        {% endfor %}
+                {#{% for register in registers %}#}
+                {#<td width="15%">#}
+                    {#<table>#}
+                        {#<tr>#}
+                            {#<td width="80px">#}
+                                {#<a href="{{ path('member_show', { 'id': register.id }) }}" class="btn btn-sm btn-success"><i class="fa fa-eye"></i> show</a>#}
+                            {#</td>#}
+                            {#<td width="80px">#}
+                                {#<a href="{{ path('member_edit', { 'id': register.id }) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> edit </a>#}
+                            {#</td>#}
+                        {#</tr>#}
+                    {#</table>#}
+                {#</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
         </tbody>
     </table>
 </div>
