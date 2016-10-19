@@ -14,7 +14,7 @@ class MvaayoBulk extends Controller
 {
     public function BulkSmsAction($phone, $tasks)
     {
-//                dump($phone,$tasks );die;
+//         dump($phone,$tasks );die;
 //        $phone_list = "";
 //        foreach ($response as $rowRestore)
 //        {
@@ -58,7 +58,6 @@ class MvaayoBulk extends Controller
 //        return $buffer;
 
 
-//
         $ch = curl_init();
         $user = "ezycreation@live.com:Misfit?321";
         $senderID = "TEST SMS";
