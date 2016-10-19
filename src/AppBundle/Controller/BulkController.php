@@ -88,7 +88,7 @@ class BulkController extends Controller
 
             $request->getSession()
                 ->getFlashBag()
-                ->add('success', 'Message set successfully!')
+                ->add('success', 'Message sent successfully!')
             ;
             // perform some action...
             $mvaayo = new MvaayoBulk();
