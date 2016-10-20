@@ -57,7 +57,6 @@ class MvaayoBulk extends Controller
 //        curl_close($ch);
 //        return $buffer;
 
-
         $ch = curl_init();
         $user = "ezycreation@live.com:Misfit?321";
         $senderID = "TEST SMS";
