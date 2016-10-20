@@ -77,7 +77,7 @@ class MvaayoBulk extends Controller
         if (empty ($buffer)) {
             echo " buffer is empty ";
         } else {
-            echo $buffer;
+//            echo $buffer;
         }
         curl_close($ch);
         return $buffer;
