@@ -1,7 +1,37 @@
 {% extends 'admin.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .loading-overlay{
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            background: rgba(255,255,255,0.7);
+        }
+        .overlay-content {
+            position: absolute;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            top:50%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #555;
+        }
+    </style>
+{% endblock %}
 {% block body %}
 <div ng-app="fetch"  ng-controller="dbCtrl">
     <p>&nbsp;</p>
+    <div ng-show="loading" class="loading-overlay">
+        <div class="overlay-content">
+            <img src="{{ asset('images/loading-gear.gif') }}" >
+        </div>
+    </div>
     <div class="input-group custom-search-form">
         <input type="text" ng-model="searchFilter" class="form-control" placeholder="Search...">
         <span class="input-group-btn">
@@ -11,6 +41,7 @@
                                 </span>
     </div>
     <p>&nbsp;</p>
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -59,9 +90,11 @@
         });
 
         fetch.controller('dbCtrl', ['$scope', '$http', function ($scope, $http) {
+            $scope.loading = true;
             $http.get("{{ path('emp_angular') }}")
                     .success(function(data){
                         $scope.data = data;
+                        $scope.loading = false;
                                            })
                     .error(function() {
                         $scope.data = "error in fetching data";
