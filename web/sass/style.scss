@@ -10,13 +10,20 @@ html, body{
 }
 
 body {
+  color:#111;
+}
+
+h1{
+  font-size: 1.500em;
+}
+
+#screen1{
   background:url(../images/background-img.jpg) #213159;
   background-position:center center;
   background-repeat:no-repeat;
   background-attachment:fixed;
   background-size:cover;
 }
-
 a:link{text-decoration: none;}
 
 header{
@@ -27,13 +34,14 @@ header{
 
 .mid-box
 {
-  padding-top: 15%;
+  padding-top: 10%;
 
   h1 {
     font-family:$play-fair;
     font-weight:700;
     font-size:3em;
     line-height:50px;
+    margin-top:10px;
   }
 
   em{
@@ -115,4 +123,49 @@ header{
     }
   }
 
+}
+
+nav {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  background: #213159;
+  font-family:$open-sans;
+
+  li {
+  display: inline-block;
+  padding: 24px 10px;
+    font-size:0.875em;
+}
+
+  li a {
+  color: #f0f0f0;
+  text-transform: uppercase;
+}
+  li a:hover{
+    color:#FFF;
+  }
+  li a:visited{
+    color:#FFF;
+  }
+
+
+}
+section {
+  height:100vh;
+  font-family:$open-sans;
+}
+
+#screen2{
+  padding:60px 0;
+  line-height: 24px;
+  font-size:0.875em;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  height: 70px;
+  z-index: 1;
 }
