@@ -1,0 +1,55 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <h3 class="page-header">Registration Details</h3>
+
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ delegate.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ delegate.name }}</td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td>{{ delegate.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Church</th>
+                <td>{{ delegate.church }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ delegate.gender }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ delegate.phone }}</td>
+            </tr>
+            <tr>
+                <th>District</th>
+                <td>{{ delegate.district }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <a href="{{ path('delegates_edit', { 'id': delegate.id }) }}" class="btn btn-sm btn-primary">Edit</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Delete" class="btn btn-sm btn-danger">
+                {{ form_end(delete_form) }}
+            </td>
+            <td>&nbsp;</td>
+            <td>
+                <a href="{{ path('delegates_index') }}" class="btn btn-sm btn-default"><i class="fa fa-reply fa-fw"></i> Back to the list</a>
+            </td>
+        </tr>
+    </table>
+ {% endblock %}

@@ -1,0 +1,3 @@
+youth_convention_delegates:
+    resource: "@YouthConventionBundle/Resources/config/routing/delegates.yml"
+    prefix:   /delegates

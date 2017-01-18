@@ -26,6 +26,7 @@
     </style>
 {% endblock %}
 {% block body %}
+    {% if is_granted('ROLE_MEMBERS') %}
     <div class="container-fluid">
         <h2 class="page-header">Registration List</h2>
     <div class="form-group pull-right">
@@ -83,6 +84,7 @@
     </table>
     </div>
     </div>
+        {% endif %}
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}

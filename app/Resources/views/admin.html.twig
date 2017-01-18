@@ -10,12 +10,14 @@
             <link rel="stylesheet" href="{{ asset('css/metisMenu.min.css') }}">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
     </head>
     <body>
     <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; ">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -23,7 +25,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><table><tr><td><img src="{{ asset('images/epcs.jpg') }}" width="30" alt="EPCS"> </td><td>&nbsp; 23rd Annual NE Convention</td></tr></table></a>
+                {% if is_granted('ROLE_DELEGATES') %}
+                <a class="navbar-brand" href="#" style="color:#286090  ;font-size:22px; font-family:'Montserrat', sans-serif; "><table><tr><td><img src="{{ asset('images/epcs.jpg') }}" width="30" alt="EPCS"> </td><td>&nbsp; 23rd Annual Youth Convention 2017 <span style="font-family: 'Playfair Display', serif; font-style: italic; color:#444;">&nbsp;&nbsp;&nbsp;&nbsp; A New Heart - Ezekiel 38:26</span></td></tr></table></a>
+                {% endif %}
+                {% if is_granted('ROLE_MEMBERS') %}
+                    <a class="navbar-brand" href="#" style="color:#286090  ;font-size:22px; font-family:'Montserrat', sans-serif; "><table><tr><td><img src="{{ asset('images/epcs.jpg') }}" width="30" alt="EPCS"> </td><td>&nbsp; 23rd Annual NE Convention</td></tr></table></a>
+                {% endif %}
             </div>
             <!-- /.navbar-header -->
 
@@ -48,6 +55,103 @@
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
+                    {% if is_granted('ROLE_DELEGATES') %}
+                        <ul class="nav" id="side-menu">
+                            <li class="sidebar-search">
+                                {#<div class="input-group custom-search-form">#}
+                                {#<input type="text" class="form-control" placeholder="Search...">#}
+                                {#<span class="input-group-btn">#}
+                                {#<button class="btn btn-default" type="button">#}
+                                {#<i class="fa fa-search"></i>#}
+                                {#</button>#}
+                                {#</span>#}
+                                {#</div>#}
+                                <!-- /input-group -->
+                            </li>
+                            <li>
+                                <a href="{{ path('delegates_index') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('delegates_new') }}"><i class="fa fa-pencil fa-fw"></i> Create a new entry</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('bulk_sms1') }}"><i class="fa fa-envelope fa-fw"></i> Send Message to All</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('search') }}"><i class="fa fa-search fa-fw"></i> Search</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('delegates_index') }}"><i class="fa fa-reply fa-fw"></i> Back to the list</a>
+                            </li>
+                            {#<li>#}
+                            {#<a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>#}
+                            {#<ul class="nav nav-second-level">#}
+                            {#<li>#}
+                            {#<a href="panels-wells.html">Panels and Wells</a>#}
+                            {#</li>#}
+                            {#<li>#}
+                            {#<a href="buttons.html">Buttons</a>#}
+                            {#</li>#}
+                            {#<li>#}
+                            {#<a href="notifications.html">Notifications</a>#}
+                            {#</li>#}
+                            {#<li>#}
+                            {#<a href="typography.html">Typography</a>#}
+                            {#</li>#}
+                            {#<li>#}
+                            {#<a href="icons.html"> Icons</a>#}
+                            {#</li>#}
+                            {#<li>#}
+                            {#<a href="grid.html">Grid</a>#}
+                            {#</li>#}
+                            {#</ul>#}
+                            {#<!-- /.nav-second-level -->#}
+                            {#</li>#}
+                            {#<li>#}
+                            {#<a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>#}
+                            {#<ul class="nav nav-second-level">#}
+                            {#<li>#}
+                            {#<a href="#">Second Level Item</a>#}
+                            {#</li>#}
+                            {#<li>#}
+                            {#<a href="#">Second Level Item</a>#}
+                            {#</li>#}
+                            {#<li>#}
+                            {#<a href="#">Third Level <span class="fa arrow"></span></a>#}
+                            {#<ul class="nav nav-third-level">#}
+                            {#<li>#}
+                            {#<a href="#">Third Level Item</a>#}
+                            {#</li>#}
+                            {#<li>#}
+                            {#<a href="#">Third Level Item</a>#}
+                            {#</li>#}
+                            {#<li>#}
+                            {#<a href="#">Third Level Item</a>#}
+                            {#</li>#}
+                            {#<li>#}
+                            {#<a href="#">Third Level Item</a>#}
+                            {#</li>#}
+                            {#</ul>#}
+                            {#<!-- /.nav-third-level -->#}
+                            {#</li>#}
+                            {#</ul>#}
+                            {#<!-- /.nav-second-level -->#}
+                            {#</li>#}
+                            {#<li class="active">#}
+                            {#<a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>#}
+                            {#<ul class="nav nav-second-level">#}
+                            {#<li>#}
+                            {#<a class="active" href="blank.html">Blank Page</a>#}
+                            {#</li>#}
+                            {#<li>#}
+                            {#<a href="login.html">Login Page</a>#}
+                            {#</li>#}
+                            {#</ul>#}
+                            {#<!-- /.nav-second-level -->#}
+                            {#</li>#}
+                        </ul>
+                    {% endif %}
+                    {% if is_granted('ROLE_MEMBERS') %}
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             {#<div class="input-group custom-search-form">#}
@@ -142,6 +246,7 @@
                             {#<!-- /.nav-second-level -->#}
                         {#</li>#}
                     </ul>
+                    {% endif %}
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>

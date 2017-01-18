@@ -1,0 +1,25 @@
+{% extends 'admin.html.twig' %}
+{% block body %}
+    {% if app.session.flashBag.has('success') %}
+        <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('success') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
+<h3 class="page-header">Send message to all registered phone number</h3>
+{{ form_start(form) }}
+    <label>Your Message</label>
+    {{ form_widget(form.task, { 'attr': {'class': 'form-control'} }) }}
+    <br>
+{#<label>Name</label>#}
+{#{{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}#}
+{#<br>#}
+{#<label>Phone</label>#}
+{#{{ form_widget(form.phn, { 'attr': {'class': 'form-control'} }) }}#}
+{#<br>#}
+<input type="submit" value="Send Message" class="btn btn-sm btn-success" />
+    {#<a href="{{ path('member_index') }}" class="btn btn-sm btn-default"><i class="fa fa-reply fa-fw"></i> Back to the list</a>#}
+{{ form_end(form) }}
+
+{% endblock %}

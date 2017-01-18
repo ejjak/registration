@@ -1,0 +1,104 @@
+{% extends 'admin.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .loading-overlay{
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            background: rgba(255,255,255,0.7);
+        }
+        .overlay-content {
+            position: absolute;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            top:50%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #555;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div ng-app="fetch"  ng-controller="dbCtrl">
+    <p>&nbsp;</p>
+    <div ng-show="loading" class="loading-overlay">
+        <div class="overlay-content">
+            <img src="{{ asset('images/loading-gear.gif') }}" >
+        </div>
+    </div>
+    <div class="input-group custom-search-form">
+        <input type="text" ng-model="searchFilter" class="form-control" placeholder="Search...">
+        <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+    </div>
+    <p>&nbsp;</p>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Phone No.</th>
+            <th>Church</th>
+            <th>District</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="delegates in data | filter:searchFilter">
+                <td>{[{ delegates.id }]}</td>
+                <td>{[{ delegates.name }]}</td>
+                <td>{[{ delegates.lastname }]}</td>
+                <td>{[{ delegates.gender }]}</td>
+                <td>{[{ delegates.phone }]}</td>
+                <td>{[{ delegates.church }]}</td>
+                <td>{[{ delegates.district }]}</td>
+                {#{% for register in registers %}#}
+                {#<td width="15%">#}
+                    {#<table>#}
+                        {#<tr>#}
+                            {#<td width="80px">#}
+                                {#<a href="{{ path('member_show', { 'id': register.id }) }}" class="btn btn-sm btn-success"><i class="fa fa-eye"></i> show</a>#}
+                            {#</td>#}
+                            {#<td width="80px">#}
+                                {#<a href="{{ path('member_edit', { 'id': register.id }) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> edit </a>#}
+                            {#</td>#}
+                        {#</tr>#}
+                    {#</table>#}
+                {#</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+        </tbody>
+    </table>
+</div>
+    {% endblock %}
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
+    <script type="text/javascript">
+        var fetch = angular.module('fetch', []).config(function($interpolateProvider){
+            $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+        });
+
+        fetch.controller('dbCtrl', ['$scope', '$http', function ($scope, $http) {
+            $scope.loading = true;
+            $http.get("{{ path('angular_search') }}")
+                    .success(function(data){
+                        $scope.data = data;
+                        $scope.loading = false;
+                                           })
+                    .error(function() {
+                        $scope.data = "error in fetching data";
+                    });
+        }]);
+        </script>
+{% endblock %}

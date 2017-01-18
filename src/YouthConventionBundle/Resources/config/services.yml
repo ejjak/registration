@@ -1,0 +1,4 @@
+services:
+#    youth_convention.example:
+#        class: YouthConventionBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

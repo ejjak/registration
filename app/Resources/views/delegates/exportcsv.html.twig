@@ -1,0 +1,4 @@
+Id, Name, Last Name, Gender, Phone No., Church, District
+{% for row in data %}
+    {{ row.id }}, {{ row.name }}, {{ row.lastname }}, {{ row.gender }}, {{ row.phone }}, {{ row.church }}, {{ row.district }}
+{% endfor %}

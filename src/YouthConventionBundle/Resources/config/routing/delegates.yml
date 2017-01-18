@@ -1,0 +1,41 @@
+delegates_index:
+    path:     /
+    defaults: { _controller: "YouthConventionBundle:Delegates:index" }
+    methods:  GET
+
+delegates_show:
+    path:     /{id}/show
+    defaults: { _controller: "YouthConventionBundle:Delegates:show" }
+    methods:  GET
+
+delegates_new:
+    path:     /new
+    defaults: { _controller: "YouthConventionBundle:Delegates:new" }
+    methods:  [GET, POST]
+
+delegates_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "YouthConventionBundle:Delegates:edit" }
+    methods:  [GET, POST]
+
+delegates_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "YouthConventionBundle:Delegates:delete" }
+    methods:  DELETE
+
+bulk_sms1:
+    path: /bulksmsview
+    defaults: { _controller: "YouthConventionBundle:BulkSms:Bulk" }
+    methods:  [GET, POST]
+
+angular_search:
+    path: /angular_search
+    defaults: {_controller: "YouthConventionBundle:SearchList:angular_search"}
+
+search:
+    path: /search
+    defaults: {_controller: "YouthConventionBundle:SearchList:search"}
+
+export_csv:
+    path: /export_csv
+    defaults: {_controller: "YouthConventionBundle:ExportCSV:ExportCSV"}

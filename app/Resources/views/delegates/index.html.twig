@@ -1,0 +1,72 @@
+{% extends 'admin.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .container-fluid{position: relative;}
+        .loading-overlay{
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            background: rgba(255,255,255,0.7);
+        }
+        .overlay-content {
+            position: absolute;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            top: 50%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #555;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+     {% if is_granted('ROLE_DELEGATES') %}
+             <h2 class="page-header">Registration List</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Church</th>
+                <th>Gender</th>
+                <th>Phone</th>
+                <th>District</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for delegate in delegates %}
+            <tr>
+                <td><a href="{{ path('delegates_show', { 'id': delegate.id }) }}">{{ delegate.id }}</a></td>
+                <td>{{ delegate.name }}</td>
+                <td>{{ delegate.lastname }}</td>
+                <td>{{ delegate.church }}</td>
+                <td>{{ delegate.gender }}</td>
+                <td>{{ delegate.phone }}</td>
+                <td>{{ delegate.district }}</td>
+                <td width="15%">
+                    <table>
+                        <tr>
+                            <td width="80px">
+                                <a href="{{ path('delegates_show', { 'id': delegate.id }) }}" class="btn btn-sm btn-success"><i class="fa fa-eye"></i> show</a>
+                            </td>
+                            <td width="80px">
+                                <a href="{{ path('delegates_edit', { 'id': delegate.id }) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> edit </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+{% endblock %}
