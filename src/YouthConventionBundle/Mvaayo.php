@@ -29,9 +29,7 @@ class Mvaayo extends Controller
             $district = $detail['district'];
             $d = $district[0];
             $thanks =", thank you for registering with 23rd Annual Youth Convention. Your registration id is AYC";
-            $queries = " For any queries please call Milan 9563344569, Issachar 9563344569, Robin 9563344569, Kessang 9563344569";
-//          $query = "For any queries please call Milan 9563344569, Issachar 9563344569, Robin 9563344569, Kessang 9563344569";
-//          $msgtxt = "Dear ".$detail['name']." from ".$detail['church']. ", thanks for registering with 23rd Annual Youth Convention".$d."".$detail['id'];
+            $queries = " For any queries please call Milan(9733110850), Issachar(8116666970), Robin(8348056712) , Kessang(9641549764) ";
             $msgtxt = "Dear ".$detail['name'].$thanks.$d.$detail['id'].$queries;
         }
         $senderID = "TEST SMS";
