@@ -2,34 +2,60 @@
 
 {% block body %}
     <h3 class="page-header">Edit Entry</h3>
-
+    {% if app.session.flashBag.has('success') %}
+        <div class="alert alert-success">
+            <i class="fa fa-check-square-o"></i>
+            {% for msg in app.session.flashBag.get('success') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
     {{ form_start(edit_form) }}
-    <label>Name</label>
-    {{ form_widget(edit_form.name, { 'attr': {'class': 'form-control'} }) }}
-    <br>
-    <label>Name</label>
-    {{ form_widget(edit_form.lastname, { 'attr': {'class': 'form-control'} }) }}
-    <br>
-    <label>Gender</label>
-    {{ form_widget(edit_form.gender, { 'attr': {'class': 'form-control'} }) }}
-    <br>
-    <label>Phone Number</label>
-    {{ form_widget(edit_form.phone, { 'attr': {'class': 'form-control'} }) }}
-    <br>
-    <label>Church Address</label>
-    {{ form_widget(edit_form.church, { 'attr': {'class': 'form-control'} }) }}
-    <br>
-    <label>District</label>
-    {{ form_widget(edit_form.district, { 'attr': {'class': 'form-control'} }) }}
-    <br>
-    <input type="submit" value="Edit" class="btn btn-sm btn-success"/>
+    <table class="table table-striped">
+        <tr>
+            <td>
+                <label>Name</label>
+                {{ form_widget(edit_form.name, { 'attr': {'class': 'form-control'} }) }}
+            </td>
+            <td>
+                <label>Last Name</label>
+                {{ form_widget(edit_form.lastname, { 'attr': {'class': 'form-control'} }) }}
+            </td>
+            <td width="17%">
+                <label>Gender</label>
+                {{ form_widget(edit_form.gender, { 'attr': {'class': 'form-control'} }) }}
+            </td>
+        </tr>
+    </table>
+    <table class="table table-striped">
+        <tr>
+
+            <td>
+                <label>Phone Number</label>
+                {{ form_widget(edit_form.phone, { 'attr': {'class': 'form-control'} }) }}
+            </td>
+        </tr>
+    </table>
+    <table class="table table-striped">
+        <tr>
+            <td>
+                <label>Church Address</label>
+                {{ form_widget(edit_form.church, { 'attr': {'class': 'form-control'} }) }}
+            </td>
+            <td>
+                <label>District</label>
+                {{ form_widget(edit_form.district, { 'attr': {'class': 'form-control'} }) }}
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Edit" class="btn btn-md btn-success"/>
     {{ form_end(edit_form) }}
     <p>&nbsp;</p>
     <table>
         <tr>
             <td>
                 {{ form_start(delete_form) }}
-                <input type="submit" value="Delete" class="btn btn-sm btn-danger"> <a href="{{ path('delegates_index') }}" class="btn btn-sm btn-default"><i class="fa fa-reply fa-fw"></i> Back to the list</a>
+                <input type="submit" value="Delete" onclick="return confirm('Do you really want to delete this entry?')" class="btn btn-md btn-danger"> <a href="{{ path('delegates_index') }}" class="btn btn-md btn-default"><i class="fa fa-reply fa-fw"></i> Back to the list</a>
                 {{ form_end(delete_form) }}
             </td>
         </tr>

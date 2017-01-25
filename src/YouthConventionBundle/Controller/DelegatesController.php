@@ -43,6 +43,10 @@ class DelegatesController extends Controller
             $em->persist($delegate);
             $em->flush();
 
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'Registration successful!');
+
             $mvaayo = new Mvaayo();
             $mvaayo->SmsAction($delegate);
 
@@ -81,7 +85,9 @@ class DelegatesController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'Edited successfully!');
             return $this->redirectToRoute('delegates_edit', array('id' => $delegate->getId()));
         }
 

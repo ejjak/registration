@@ -10,8 +10,8 @@
             <link rel="stylesheet" href="{{ asset('css/metisMenu.min.css') }}">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
     </head>
     <body>
     <div id="wrapper">
@@ -26,7 +26,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 {% if is_granted('ROLE_DELEGATES') %}
-                <a class="navbar-brand" href="#" style="color:#286090  ;font-size:22px; font-family:'Montserrat', sans-serif; "><table><tr><td><img src="{{ asset('images/epcs.jpg') }}" width="30" alt="EPCS"> </td><td>&nbsp; 23rd Annual Youth Convention 2017 <span style="font-family: 'Playfair Display', serif; font-style: italic; color:#444;">&nbsp;&nbsp;&nbsp;&nbsp; A New Heart - Ezekiel 38:26</span></td></tr></table></a>
+                <a class="navbar-brand" href="#" style="color:#286090  ;font-size:22px; font-family:'Montserrat', sans-serif; "><table><tr><td><img src="{{ asset('images/epcs.jpg') }}" width="30" alt="EPCS"> </td><td>&nbsp; 23rd Annual Youth Convention 2017 <span style="font-family: 'Great Vibes', cursive; color:#28609D;">&nbsp;&nbsp;&nbsp;&nbsp; I will give you a new heart - Ezekiel 36:26</span></td></tr></table></a>
                 {% endif %}
                 {% if is_granted('ROLE_MEMBERS') %}
                     <a class="navbar-brand" href="#" style="color:#286090  ;font-size:22px; font-family:'Montserrat', sans-serif; "><table><tr><td><img src="{{ asset('images/epcs.jpg') }}" width="30" alt="EPCS"> </td><td>&nbsp; 23rd Annual NE Convention</td></tr></table></a>

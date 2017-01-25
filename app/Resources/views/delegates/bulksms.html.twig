@@ -2,6 +2,7 @@
 {% block body %}
     {% if app.session.flashBag.has('success') %}
         <div class="alert alert-success">
+            <i class="fa fa-check-square-o"></i>
             {% for msg in app.session.flashBag.get('success') %}
                 {{ msg }}
             {% endfor %}
@@ -18,7 +19,7 @@
 {#<label>Phone</label>#}
 {#{{ form_widget(form.phn, { 'attr': {'class': 'form-control'} }) }}#}
 {#<br>#}
-<input type="submit" value="Send Message" class="btn btn-sm btn-success" />
+<input type="submit" value="Send Message" class="btn btn-md btn-success" />
     {#<a href="{{ path('member_index') }}" class="btn btn-sm btn-default"><i class="fa fa-reply fa-fw"></i> Back to the list</a>#}
 {{ form_end(form) }}
 
