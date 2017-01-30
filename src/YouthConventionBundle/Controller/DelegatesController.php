@@ -22,9 +22,13 @@ class DelegatesController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $delegates = $em->getRepository('YouthConventionBundle:Delegates')->findAll();
-
+        $delegatesCountQuery = $em->createQueryBuilder();
+        $delegatesCountQuery->select('count(h.id)');
+        $delegatesCountQuery->from('YouthConventionBundle:Delegates','h');
+        $delegatesCount = $delegatesCountQuery->getQuery()->getSingleScalarResult();
         return $this->render('delegates/index.html.twig', array(
             'delegates' => $delegates,
+            'count' => $delegatesCount
         ));
     }
 

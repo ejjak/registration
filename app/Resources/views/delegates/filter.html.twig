@@ -1,0 +1,42 @@
+<h2 class="page-header">Registration List / {% block total %}<span >Total: {{ count }}</span>{% endblock %}</h2>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Phone</th>
+        <th>Church</th>
+        <th>District</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for var in response %}
+        <tr>
+            <td><a href="{{ path('delegates_show', { 'id': var.id }) }}">{{ var.id }}</a></td>
+            <td>{{ var.name }}</td>
+            <td>{{ var.lastname }}</td>
+            <td>{{ var.gender}}</td>
+            <td>{{ var.phone }}</td>
+            <td>{{ var.church }}</td>
+            <td>{{ var.district }}</td>
+            <td width="15%">
+                <table>
+                    <tr>
+                        <td width="80px">
+                            <a href="{{ path('delegates_show', { 'id': var.id }) }}" class="btn btn-sm btn-default"><i class="fa fa-eye"></i> show</a>
+                        </td>
+                        <td width="80px">
+                            <a href="{{ path('delegates_edit', { 'id': var.id }) }}" class="btn btn-sm btn-default"><i class="fa fa-edit"></i> edit </a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+

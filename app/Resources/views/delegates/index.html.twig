@@ -27,8 +27,24 @@
 {% endblock %}
 {% block body %}
      {% if is_granted('ROLE_DELEGATES') %}
-             <h2 class="page-header">Registration List</h2>
+         <div class="form-group pull-right" style="position:absolute; right: 0; top:30px;">
+             <select class="form-control" onchange="getUsers('sort',this.value)">
+                 <option value="">Sort By District</option>
+                 <option value="value1">East</option>
+                 <option value="value2">West</option>
+                 <option value="value3">North</option>
+                 <option value="value4">South</option>
+                 <option value="">All</option>
+             </select>
+         </div>
+         <div id="userData">
+             <h2 class="page-header">Registration List / {% block total %}<span >Total: {{ count }}</span>{% endblock %}</h2>
 
+    <div class="loading-overlay" style="display: none;">
+        <div class="overlay-content">
+            <img src="{{ asset('images/loading-gear.gif') }}" >
+        </div>
+    </div>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -68,5 +84,31 @@
         {% endfor %}
         </tbody>
     </table>
+    </div>
 {% endif %}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        //        $(function () {
+        //            $("#status").change(function () {
+        //                var selectedText = $(this).find("option:selected").text();
+        //                var selectedValue = $(this).val();
+        //                alert("Selected Text: " + selectedText + " Value: " + selectedValue);
+        //            });
+        function getUsers(type,val){
+            $.ajax({
+                type: 'POST',
+                url: '{{ path('district_filter') }}',
+                data: 'type='+type+'&val='+val,
+                beforeSend:function(html){
+                    $('.loading-overlay').show();
+                },
+                success:function(html){
+                    $('.loading-overlay').hide();
+                    $('#userData').html(html);
+                }
+            });
+        }
+    </script>
 {% endblock %}

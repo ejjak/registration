@@ -39,3 +39,8 @@ search:
 export_csv:
     path: /export_csv
     defaults: {_controller: "YouthConventionBundle:ExportCSV:ExportCSV"}
+
+district_filter:
+    path: /filter
+    defaults: { _controller: "YouthConventionBundle:FilterDistrict:Filter" }
+    methods:  [GET, POST]
