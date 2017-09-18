@@ -6,7 +6,7 @@
     <label>Name</label>
     {{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}
     <br>
-    <label>Last Name</label>
+    <label>Email</label>
     {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
     <br>
     <label>Phone</label>
@@ -18,7 +18,7 @@
     <label>Address</label>
     {{ form_widget(form.address, { 'attr': {'class': 'form-control'} }) }}
     <br>
-    <label>Church</label>
+    <label>Posting</label>
     {{ form_widget(form.church, { 'attr': {'class': 'form-control'} }) }}
     <br>
         <input type="submit" value="Create" class="btn btn-sm btn-success" />  <a href="{{ path('member_index') }}" class="btn btn-sm btn-default"><i class="fa fa-reply fa-fw"></i> Back to the list</a>
