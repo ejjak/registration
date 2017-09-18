@@ -58,7 +58,7 @@ class Register
     /**
      * @var string
      *
-     * @ORM\Column(name="church", type="string", length=255)
+     * @ORM\Column(name="posting", type="string", length=255)
      */
     private $church;
 
