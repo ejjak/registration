@@ -29,64 +29,84 @@
 {% endblock %}
 {% block body %}
      {% if is_granted('ROLE_DELEGATES') %}
-         <div class="form-group pull-right" style="position:absolute; right: 0; top:30px;">
-             <select class="form-control" onchange="getUsers('sort',this.value)">
-                 <option value="">Sort By District</option>
-                 <option value="value1">East</option>
-                 <option value="value2">West</option>
-                 <option value="value3">North</option>
-                 <option value="value4">South</option>
-                 <option value="">All</option>
-             </select>
-         </div>
-         <div id="userData">
-             <h2 class="page-header">Registration List / {% block total %}<span >Total: {{ count }}</span>{% endblock %}</h2>
 
-    <div class="loading-overlay" style="display: none;">
-        <div class="overlay-content">
-            <img src="{{ asset('images/loading-gear.gif') }}" >
-        </div>
-    </div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Last Name</th>
-                <th>Gender</th>
-                <th>Phone</th>
-                <th>Church</th>
-                <th>District</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for delegate in delegates %}
-            <tr>
-                <td><a href="{{ path('delegates_show', { 'id': delegate.id }) }}">{{ delegate.id }}</a></td>
-                <td>{{ delegate.name }}</td>
-                <td>{{ delegate.lastname }}</td>
-                <td>{{ delegate.gender }}</td>
-                <td>{{ delegate.phone }}</td>
-                <td>{{ delegate.church }}</td>
-                <td>{{ delegate.district }}</td>
-                <td width="15%">
-                    <table>
-                        <tr>
-                            <td width="80px">
-                                <a href="{{ path('delegates_show', { 'id': delegate.id }) }}" class="btn btn-sm btn-success"><i class="fa fa-eye"></i> show</a>
-                            </td>
-                            <td width="80px">
-                                <a href="{{ path('delegates_edit', { 'id': delegate.id }) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> edit </a>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    </div>
+
+         <div class="page-title">
+             <h2><span class="fa fa-info-circle"></span> Registration List / {% block total %}<span >Total: {{ count }}</span>{% endblock %}</h2>
+         </div>
+         <!-- PAGE CONTENT WRAPPER -->
+         <div class="page-content-wrap">
+
+             <div class="row">
+                 <div class="col-md-12">
+                     <div class="panel panel-default">
+                         <div class="panel-body">
+                             <strong>Add or Edit Content</strong><br><br>
+
+                             <div class="form-group pull-right" style="position:absolute; right: 0; top:30px;">
+                                 <select class="form-control" onchange="getUsers('sort',this.value)">
+                                     <option value="">Sort By Zone</option>
+                                     <option value="value1">East</option>
+                                     <option value="value2">West</option>
+                                     <option value="value3">North</option>
+                                     <option value="value4">South</option>
+                                     <option value="">All</option>
+                                 </select>
+                             </div>
+                             <div id="userData">
+
+                                 <div class="loading-overlay" style="display: none;">
+                                     <div class="overlay-content">
+                                         <img src="{{ asset('images/loading-gear.gif') }}" >
+                                     </div>
+                                 </div>
+                                 <table class="table table-striped">
+                                     <thead>
+                                     <tr>
+                                         <th>Id</th>
+                                         <th>Name</th>
+                                         <th>Last Name</th>
+                                         <th>Gender</th>
+                                         <th>Phone</th>
+                                         <th>Church</th>
+                                         <th>Zone</th>
+                                         <th>Actions</th>
+                                     </tr>
+                                     </thead>
+                                     <tbody>
+                                     {% for delegate in delegates %}
+                                         <tr>
+                                             <td><a href="{{ path('delegates_show', { 'id': delegate.id }) }}">{{ delegate.id }}</a></td>
+                                             <td>{{ delegate.name }}</td>
+                                             <td>{{ delegate.lastname }}</td>
+                                             <td>{{ delegate.gender }}</td>
+                                             <td>{{ delegate.phone }}</td>
+                                             <td>{{ delegate.church }}</td>
+                                             <td>{{ delegate.district }}</td>
+                                             <td width="15%">
+                                                 <table>
+                                                     <tr>
+                                                         <td width="80px">
+                                                             <a href="{{ path('delegates_show', { 'id': delegate.id }) }}" class="btn btn-sm btn-success"><i class="fa fa-eye"></i> show</a>
+                                                         </td>
+                                                         <td width="80px">
+                                                             <a href="{{ path('delegates_edit', { 'id': delegate.id }) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> edit </a>
+                                                         </td>
+                                                     </tr>
+                                                 </table>
+                                             </td>
+                                         </tr>
+                                     {% endfor %}
+                                     </tbody>
+                                 </table>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+             </div>
+
+         </div>
 {% endif %}
 {% endblock %}
 {% block javascripts %}

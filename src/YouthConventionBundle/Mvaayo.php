@@ -24,13 +24,17 @@ class Mvaayo extends Controller
                 'id' => $register->getId(),
                 'name' => $register->getName(),
                 'church' => $register->getChurch(),
-                'district' => $register->getDistrict()
+//                'district' => $register->getDistrict()
             );
-            $district = $detail['district'];
-            $d = $district[0];
-            $thanks =", thank you for registering with 23rd Annual Youth Convention. Your registration id is ( AYC";
-            $queries = " ) For any queries please call - Milan(9733110850), Issachar(8116666970), Robin(8348056712) , Kessang(9641549764) ";
-            $msgtxt = "Dear ".$detail['name'].$thanks.$d.$detail['id'].$queries;
+//            $district = $detail['district'];
+//            $d = $district[0];
+            $thanks =", thank you for registering with 24th Annual NEP-EPCS Convention 2017.";
+            $queries = " ) Please feel free to contact for any queries and emergency - Mr. Karma Bhutia(9933112819), Mrs.Basundhara Subba(9434488699)";
+            $msgtxt = "Dear ".$detail['name'].$thanks.$queries;
+
+//            $thanks =", thank you for registering with 24th Annual NEP-EPCS Convention 2017. Your registration id is ( AYC";
+//            $queries = " ) Please feel free to contact for any queries and emergency - Mr. Karma Bhutia(9933112819), Mrs.Basundhara Subba(9434488699)";
+//            $msgtxt = "Dear ".$detail['name'].$thanks.$d.$detail['id'].$queries;
         }
         $senderID = "TEST SMS";
         curl_setopt($ch,CURLOPT_URL,  "http://api.mVaayoo.com/mvaayooapi/MessageCompose?state=1");

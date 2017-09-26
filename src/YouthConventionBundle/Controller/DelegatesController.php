@@ -54,7 +54,7 @@ class DelegatesController extends Controller
             $mvaayo = new Mvaayo();
             $mvaayo->SmsAction($delegate);
 
-            return $this->redirectToRoute('delegates_show', array('id' => $delegate->getId()));
+            return $this->redirectToRoute('delegates_index', array('id' => $delegate->getId()));
         }
 
         return $this->render('delegates/new.html.twig', array(

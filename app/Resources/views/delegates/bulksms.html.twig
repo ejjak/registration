@@ -8,19 +8,35 @@
             {% endfor %}
         </div>
     {% endif %}
-<h3 class="page-header">Send message to all registered phone number</h3>
+    <div class="page-title">
+        <h2><span class="fa fa-info-circle"></span> Send message to all registered phone number</h2>
+    </div>
 {{ form_start(form) }}
-    <label>Your Message</label>
-    {{ form_widget(form.task, { 'attr': {'class': 'form-control'} }) }}
-    <br>
-{#<label>Name</label>#}
-{#{{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}#}
-{#<br>#}
-{#<label>Phone</label>#}
-{#{{ form_widget(form.phn, { 'attr': {'class': 'form-control'} }) }}#}
-{#<br>#}
-<input type="submit" value="Send Message" class="btn btn-md btn-success" />
-    {#<a href="{{ path('member_index') }}" class="btn btn-sm btn-default"><i class="fa fa-reply fa-fw"></i> Back to the list</a>#}
+    <div class="page-content-wrap">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <strong>Your Message</strong><br><br>
+                        {{ form_widget(form.task, { 'attr': {'class': 'form-control'} }) }}
+                        <br>
+                        {#<label>Name</label>#}
+                        {#{{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}#}
+                        {#<br>#}
+                        {#<label>Phone</label>#}
+                        {#{{ form_widget(form.phn, { 'attr': {'class': 'form-control'} }) }}#}
+                        {#<br>#}
+                        <input type="submit" value="Send Message" class="btn btn-md btn-success" />
+                        {#<a href="{{ path('member_index') }}" class="btn btn-sm btn-default"><i class="fa fa-reply fa-fw"></i> Back to the list</a>#}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
 {{ form_end(form) }}
 
 {% endblock %}
