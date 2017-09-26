@@ -93,7 +93,7 @@ class BulkSmsController extends Controller
             // perform some action...
             $mvaayo = new MvaayoBulk();
             $mvaayo->BulkSmsAction($phone, $tasks);
-//            return $this->redirectToRoute('task_success');
+           return $this->redirect($request->getUri());
         }
 
         return $this->render('delegates/bulksms.html.twig', array(

@@ -2,6 +2,10 @@ youth_convention_delegates:
     resource: "@YouthConventionBundle/Resources/config/routing/delegates.yml"
     prefix:   /delegates
 
+convention:
+    resource: "@YouthConventionBundle/Controller/"
+    type:     annotation
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

@@ -7334,3 +7334,11 @@ li.ext_zip {
 .x-navigation-minimized .xn-logo{
 display:none;
 }
+
+.alert-success{
+  background: none;
+  border:none;
+  padding-left:0;
+}
+
+.alert-success span{ background: #95b75d; padding: 5px;}

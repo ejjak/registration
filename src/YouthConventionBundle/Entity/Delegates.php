@@ -3,6 +3,7 @@
 namespace YouthConventionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Delegates
@@ -51,7 +52,8 @@ class Delegates
 
     /**
      * @var string
-     *
+     * @Assert\Length(min =10, max = 10, minMessage = "min_lenght", maxMessage = "max_lenght")
+     * @Assert\Regex(pattern="/^[0-9]*$/", message="number_only")
      * @ORM\Column(name="phone", type="string", length=15)
      */
     private $phone;

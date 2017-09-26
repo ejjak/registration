@@ -40,18 +40,18 @@
             </li>
             {% if is_granted('ROLE_DELEGATES') %}
             <li>
-                <a href="{{ path('delegates_index') }}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
+                <a href="{{ path('desmee_admin_homepage') }}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
+                <a href="{{ path('delegates_index') }}"><span class="fa fa-list fa-fw"></span> <span class="xn-text">Registration list</span></a>
                 <a href="{{ path('delegates_new') }}"><span class="fa fa-pencil fa-fw"></span> <span class="xn-text">Create a new entry</span></a>
-                <a href="{{ path('bulk_sms1') }}"><span class="fa fa-envelope fa-fw"></span> <span class="xn-text">Send Message to All</span></a>
                 <a href="{{ path('search') }}"><span class="fa fa-search fa-fw"></span> <span class="xn-text">Search</span></a>
-                <a href="{{ path('delegates_index') }}"><span class="fa fa-reply fa-fw"></span> <span class="xn-text">Registration list</span></a>
+                <a href="{{ path('bulk_sms1') }}"><span class="fa fa-envelope fa-fw"></span> <span class="xn-text">Send Message to All</span></a>
             {% endif %}
             {% if is_granted('ROLE_MEMBERS') %}
                 <a href="{{ path('member_index') }}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
-                <a href="{{ path('member_new') }}"><span class="fa fa-pencil fa-fw"></span> <span class="xn-text">Create a new entry</span></a>
-                <a href="{{ path('bulk_sms') }}"><span class="fa fa-envelope fa-fw"></span> <span class="xn-text">Send Message to All</span></a>
-                <a href="{{ path('angular') }}"><span class="fa fa-search fa-fw"></span> <span class="xn-text">Search</span></a>
                 <a href="{{ path('member_index') }}"><span class="fa fa-reply fa-fw"></span> <span class="xn-text">Registration list</span></a>
+                <a href="{{ path('member_new') }}"><span class="fa fa-pencil fa-fw"></span> <span class="xn-text">Create a new entry</span></a>
+                <a href="{{ path('angular') }}"><span class="fa fa-search fa-fw"></span> <span class="xn-text">Search</span></a>
+                <a href="{{ path('bulk_sms') }}"><span class="fa fa-envelope fa-fw"></span> <span class="xn-text">Send Message to All</span></a>
             </li>
             {% endif %}
         </ul>
@@ -78,7 +78,7 @@
 
             <!-- MESSAGES -->
             <li class="xn-icon-button pull-right">
-                <a href="#" target="_blank"><span class="fa fa-eye"></span></a>
+                <a href="#"><span class="fa fa-eye"></span></a>
             </li>
             <!-- END MESSAGES -->
 

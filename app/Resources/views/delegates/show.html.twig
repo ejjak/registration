@@ -10,17 +10,17 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
+                    {% if app.session.flashBag.has('success') %}
+                        <div class="alert alert-success">
+                             <span><i class="fa fa-check-square-o"></i>
+                            {% for msg in app.session.flashBag.get('success') %}
+                                {{ msg }}
+                            {% endfor %}</span>
+                        </div>
+                    {% endif %}
                     <div class="panel-body">
                         <strong>Add or Edit Content</strong><br><br>
 
-                        {% if app.session.flashBag.has('success') %}
-                            <div class="alert alert-success">
-                                <i class="fa fa-check-square-o"></i>
-                                {% for msg in app.session.flashBag.get('success') %}
-                                    {{ msg }}
-                                {% endfor %}
-                            </div>
-                        {% endif %}
                         <table class="table table-striped">
                             <tbody>
                             <tr>
@@ -48,7 +48,7 @@
                                 <td>{{ delegate.church }}</td>
                             </tr>
                             <tr>
-                                <th>District</th>
+                                <th>Zone</th>
                                 <td>{{ delegate.district }}</td>
                             </tr>
                             </tbody>
@@ -56,17 +56,17 @@
                         <table>
                             <tr>
                                 <td>
-                                    <a href="{{ path('delegates_edit', { 'id': delegate.id }) }}" class="btn btn-md btn-primary">Edit</a>
+                                    <a href="{{ path('delegates_edit', { 'id': delegate.id }) }}" class="btn btn-sm btn-default">Edit</a>
                                 </td>
                                 <td>&nbsp;</td>
                                 <td>
                                     {{ form_start(delete_form) }}
-                                    <input type="submit" value="Delete" onclick="return confirm('Do you really want to delete this entry?')" class="btn btn-md btn-danger">
+                                    <input type="submit" value="Delete" onclick="return confirm('Do you really want to delete this entry?')" class="btn btn-sm btn-default">
                                     {{ form_end(delete_form) }}
                                 </td>
                                 <td>&nbsp;</td>
                                 <td>
-                                    <a href="{{ path('delegates_index') }} "  class="btn btn-md btn-default"><i class="fa fa-reply fa-fw"></i> Back to the list</a>
+                                    <a href="{{ path('delegates_index') }} "  class="btn btn-sm btn-default"><i class="fa fa-reply fa-fw"></i> Back to the list</a>
                                 </td>
                             </tr>
                         </table>

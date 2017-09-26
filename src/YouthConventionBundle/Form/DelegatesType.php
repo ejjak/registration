@@ -35,7 +35,7 @@ class DelegatesType extends AbstractType
                     'South' => 'South',
                 ),
                 'required'    => false,
-                'placeholder' => 'Select District',
+                'placeholder' => 'Select Zone',
             ))
         ;
     }

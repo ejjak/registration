@@ -1,13 +1,5 @@
 {% extends 'admin.html.twig' %}
 {% block body %}
-    {% if app.session.flashBag.has('success') %}
-        <div class="alert alert-success">
-            <i class="fa fa-check-square-o"></i>
-            {% for msg in app.session.flashBag.get('success') %}
-                {{ msg }}
-            {% endfor %}
-        </div>
-    {% endif %}
     <div class="page-title">
         <h2><span class="fa fa-info-circle"></span> Send message to all registered phone number</h2>
     </div>
@@ -17,9 +9,19 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
+
+                    {% if app.session.flashBag.has('success') %}
+                        <div class="alert alert-success">
+                            <span><i class="fa fa-check-square-o"></i>
+                            {% for msg in app.session.flashBag.get('success') %}
+                                {{ msg }}
+                            {% endfor %}</span>
+                        </div>
+                    {% endif %}
                     <div class="panel-body">
+
                         <strong>Your Message</strong><br><br>
-                        {{ form_widget(form.task, { 'attr': {'class': 'form-control'} }) }}
+                        {{ form_widget(form.task, { 'attr': {'class': 'form-control','rows' : '5'} }) }}
                         <br>
                         {#<label>Name</label>#}
                         {#{{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}#}
@@ -27,7 +29,7 @@
                         {#<label>Phone</label>#}
                         {#{{ form_widget(form.phn, { 'attr': {'class': 'form-control'} }) }}#}
                         {#<br>#}
-                        <input type="submit" value="Send Message" class="btn btn-md btn-success" />
+                        <input type="submit" value="Send Message" class="btn btn-sm btn-success" />
                         {#<a href="{{ path('member_index') }}" class="btn btn-sm btn-default"><i class="fa fa-reply fa-fw"></i> Back to the list</a>#}
                     </div>
                 </div>

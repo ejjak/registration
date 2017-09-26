@@ -2,11 +2,8 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 {% block fos_user_content %}
-    <div class="login-container ">
-        {% if error %}
-            <div style="color:#F30D0D;">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
         <div class="login-box animated fadeInDown">
+
             <div class="login-logo"></div>
             <div class="login-body">
                 <div class="login-title"><strong>Welcome</strong>, Please login</div>
@@ -34,7 +31,9 @@
                     </div>
                 </form>
             </div>
-        </div>
 
-    </div>
+            {% if error %}
+                <div><span style="color:#F5871F; padding: 3px;">{{ error.messageKey|trans(error.messageData, 'security') }}</span></div>
+            {% endif %}
+        </div>
 {% endblock fos_user_content %}

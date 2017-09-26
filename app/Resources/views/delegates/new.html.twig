@@ -13,6 +13,14 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <strong>Add or Edit Content</strong><br><br>
+                    {% if app.session.flashBag.has('success') %}
+                        <div class="alert alert-success">
+                            <i class="fa fa-check-square-o"></i>
+                            {% for msg in app.session.flashBag.get('success') %}
+                                {{ msg }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                     <table class="table table-striped">
                         <tr>
                             <td>
@@ -33,6 +41,7 @@
                             <td>
                                 <label>Phone Number</label>
                                 {{ form_widget(form.phone, { 'attr': {'class': 'form-control'} }) }}
+                                <span style="color: #ff0000"> {{ form_errors(form.phone) }}</span>
                             </td>
                         </tr>
                     </table>
@@ -48,7 +57,7 @@
                             </td>
                         </tr>
                     </table>
-                    <input type="submit" value="Create" class="btn btn-md btn-success" />
+                    <input type="submit" value="Create" class="btn btn-sm btn-success"/>
                     {#<a href="{{ path('delegates_index') }}" class="btn btn-md btn-default"><i class="fa fa-reply fa-fw"></i> Back to the list</a>#}
                 </div>
             </div>

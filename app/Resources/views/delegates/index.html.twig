@@ -32,7 +32,7 @@
 
 
          <div class="page-title">
-             <h2><span class="fa fa-info-circle"></span> Registration List / {% block total %}<span >Total: {{ count }}</span>{% endblock %}</h2>
+             <h2><span class="fa fa-info-circle"></span> Registration List {% block total %} <span class="btn-lg">Total : <span style="color: #1caf9a;">{{ count }}</span></span>{% endblock %}</h2>
          </div>
          <!-- PAGE CONTENT WRAPPER -->
          <div class="page-content-wrap">
@@ -43,7 +43,7 @@
                          <div class="panel-body">
                              <strong>Add or Edit Content</strong><br><br>
 
-                             <div class="form-group pull-right" style="position:absolute; right: 0; top:30px;">
+                             <div class="form-group pull-right" style="position:absolute; right:15px; top:10px;">
                                  <select class="form-control" onchange="getUsers('sort',this.value)">
                                      <option value="">Sort By Zone</option>
                                      <option value="value1">East</option>
