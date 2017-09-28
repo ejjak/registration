@@ -63,7 +63,7 @@
                                  <table class="table table-striped">
                                      <thead>
                                      <tr>
-                                         <th>Id</th>
+                                         <th>Sl No.</th>
                                          <th>Name</th>
                                          <th>Last Name</th>
                                          <th>Gender</th>
@@ -76,7 +76,7 @@
                                      <tbody>
                                      {% for delegate in delegates %}
                                          <tr>
-                                             <td><a href="{{ path('delegates_show', { 'id': delegate.id }) }}">{{ delegate.id }}</a></td>
+                                             <td>{{ loop.index }}</td>
                                              <td>{{ delegate.name }}</td>
                                              <td>{{ delegate.lastname }}</td>
                                              <td>{{ delegate.gender }}</td>
