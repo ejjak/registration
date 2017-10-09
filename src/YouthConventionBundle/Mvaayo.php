@@ -28,8 +28,8 @@ class Mvaayo extends Controller
             );
 //            $district = $detail['district'];
 //            $d = $district[0];
-            $thanks =", thank you for registering with 24th Annual NEP-EPCS Convention 2017.";
-            $queries = " ) Please feel free to contact for any queries and emergency - Mr. Karma Bhutia(9933112819), Mrs.Basundhara Subba(9434488699)";
+            $thanks =", thank you for registering with 'MAN OF HONOR CONFERENCE 2017' .";
+            $queries = " ) We are so grateful for your participation. God bless!!";
             $msgtxt = "Dear ".$detail['name'].$thanks.$queries;
 
 //            $thanks =", thank you for registering with 24th Annual NEP-EPCS Convention 2017. Your registration id is ( AYC";
